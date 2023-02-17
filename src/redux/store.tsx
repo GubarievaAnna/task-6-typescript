@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { contactsReducer } from './contacts/contactsReducer';
+import contactsReducer from './contactsSlice';
 
 const persistConfig = {
   key: 'contacts',
@@ -33,6 +33,7 @@ export const store = configureStore({
     }),
 });
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);

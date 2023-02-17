@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../utils/hooks";
 import { nanoid } from "nanoid";
-import { RootState } from "../../types/state";
-import { addContact } from "../../redux/contacts/contactsActions";
-
+import { addContact } from "../../redux/contactsSlice";
+import s from './ContactForm.module.css';
 
 const ContactForm: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [number, setNumber] = useState<string>("");
-  const selectItems = (state: Pick<RootState, "contacts">) => state.contacts.items;
-  const items = useSelector(selectItems);
-  const dispatch = useDispatch();
+  const items = useAppSelector((state) => state.contacts.items);
+  const dispatch = useAppDispatch();
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -41,13 +39,13 @@ const ContactForm: React.FC = () => {
       return;
     }
     const newContact = { id: nanoid(), name, number };
-    dispatch(addContact(name));
+    dispatch(addContact(newContact));
     reset();
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <label >
+    <form onSubmit={onFormSubmit} className={s.form}>
+      <label className={s.label}>
         Name
         <input
           type="text"
@@ -56,10 +54,11 @@ const ContactForm: React.FC = () => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           value={name}
           onChange={onInputChange}
+          className={s.input}
           required
         />
       </label>
-      <label >
+      <label>
         Number
         <input
           type="tel"
@@ -68,12 +67,11 @@ const ContactForm: React.FC = () => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           value={number}
           onChange={onInputChange}
+          className={s.input}
           required
         />
       </label>
-      <button type="submit">
-        Add a contact
-      </button>
+      <button type="submit" className={s.button}>Add a contact</button>
     </form>
   );
 };

@@ -1,17 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+
+export type Contact = {
+  name: string;
+  number: string;
+  id: string;
+}
+
+type typesSliseData = {
+  items: Contact[];
+  filter: string;
+};
+
+const initialState: typesSliseData = {
+  items: [],
+  filter: "",
+};
 
 const slice = createSlice({
-    name: 'test',
-    initialState: 0,
-    reducers: {
-      increment: (state, action: PayloadAction<number>) => state + action.payload,
+  name: "contacts",
+  initialState: initialState,
+  reducers: {
+    addContact: (
+      state,
+      action: PayloadAction<Contact>
+    ) => {
+     state.items = [...state.items, action.payload]
     },
-  })
-  // now available:
-  slice.actions.increment(2)
-  // also available:
-  slice.caseReducers.increment(0, { type: 'increment', payload: 5 });
+    deleteContact: (state, action: PayloadAction<string>) => {
+      state.items = state.items.filter((el) => el.id !== action.payload);
+    },
+    filterContacts: (state, action: PayloadAction<string>) => {
+      state.filter = action.payload;
+    },
+  },
+});
 
-
-  export const { increment } = slice.actions;
+export const { addContact, deleteContact, filterContacts } = slice.actions;
 export default slice.reducer;
