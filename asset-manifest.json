@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/task-6-typescript/static/css/main.89d72e3e.css",
+    "main.js": "/task-6-typescript/static/js/main.9346cfd6.js",
+    "index.html": "/task-6-typescript/index.html",
+    "main.89d72e3e.css.map": "/task-6-typescript/static/css/main.89d72e3e.css.map",
+    "main.9346cfd6.js.map": "/task-6-typescript/static/js/main.9346cfd6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89d72e3e.css",
+    "static/js/main.9346cfd6.js"
+  ]
+}
