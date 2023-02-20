@@ -1,25 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export type Contact = {
+type Contact = {
   name: string;
   number: string;
   id: string;
 }
 
-type typesSliseData = {
+type State = {
   items: Contact[];
   filter: string;
 };
 
-const initialState: typesSliseData = {
-  items: [],
-  filter: "",
-};
+// const initialState: State = {
+//   items: [],
+//   filter: "",
+// };
 
 const slice = createSlice({
   name: "contacts",
-  initialState: initialState,
+  initialState: {
+    items: [],
+    filter: "",
+  } as State,
   reducers: {
     addContact: (
       state,
