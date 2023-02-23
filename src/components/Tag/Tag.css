@@ -1,0 +1,43 @@
+.tag--field {
+  display: inline-block;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #3653f2;
+  border: 1px solid #464962;
+  border-radius: 15px;
+  padding: 4px 8px;
+  background-color: transparent;
+}
+
+.tag--questions {
+  display: inline-block;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: #9d9fb5;
+  border: 1px solid #464962;
+  border-radius: 15px;
+  padding: 9px 18px;
+  background-color: transparent;
+}
+
+.tag--time {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: -0.02em;
+  color: #f8f8f8;
+  border-radius: 50%;
+  border: 2px solid #3653F2; 
+  background-color: transparent;
+}
